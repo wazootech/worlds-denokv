@@ -2,7 +2,7 @@ import { assertEquals } from "@std/assert";
 import type * as rdfjs from "@rdfjs/types";
 import { DataFactory } from "n3";
 import { generateSyntheticQuads } from "../../../benchmarks/shared/synthetic-data.ts";
-import { collectQuadsFromStream } from "@/client/quad-store/mod.ts";
+import { collectQuadsFromStream } from "@worlds/client/quad-store";
 import { seedDenokvQuadsForTest } from "@/denokv/create-denokv-stores-for-test.ts";
 import { DEFAULT_DENOKV_QUAD_INDEXES } from "@/denokv/kv/denokv-index-set.ts";
 import { DenokvRdfjsStore } from "@/denokv/rdfjs-store/mod.ts";

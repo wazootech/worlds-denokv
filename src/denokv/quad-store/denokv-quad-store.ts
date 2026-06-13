@@ -4,14 +4,14 @@ import type {
   ExportResponse,
   ImportRequest,
   QuadStoreInterface,
-} from "@/client/quad-store/mod.ts";
+} from "@worlds/client/quad-store";
 import {
   exportFromRdfjsStore,
   importViaTransaction,
   Transaction,
-} from "@/client/quad-store/mod.ts";
+} from "@worlds/client/quad-store";
 import type { DenokvRdfjsStore } from "../rdfjs-store/mod.ts";
-import type { SearchIndexOnImport } from "@/client/search-index/mod.ts";
+import type { SearchIndexOnImport } from "@worlds/client/search-index";
 import {
   commitPatchToDenokv,
   type CommitPatchToDenokvOptions,

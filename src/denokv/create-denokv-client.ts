@@ -1,14 +1,14 @@
-import { Client } from "@/client/client.ts";
+import { Client } from "@worlds/client";
 import type * as rdfjs from "@rdfjs/types";
-import type { ClientInterface } from "@/client/client.ts";
-import type { ComunicaQueryEngine } from "@/comunica/mod.ts";
-import { ComunicaSparqlEngine } from "@/comunica/mod.ts";
+import type { ClientInterface } from "@worlds/client";
+import type { ComunicaQueryEngine } from "@worlds/client/adapters/comunica";
+import { ComunicaSparqlEngine } from "@worlds/client/adapters/comunica";
 
 import { DenokvRdfjsStore } from "./rdfjs-store/mod.ts";
 import { DenokvSearchIndex } from "./search-index/mod.ts";
 import { DenokvQuadStore } from "./quad-store/mod.ts";
 import type { CommitPatchToDenokvOptions } from "./commit-patch-to-denokv.ts";
-import type { SearchIndexOnImport } from "@/client/search-index/mod.ts";
+import type { SearchIndexOnImport } from "@worlds/client/search-index";
 
 /**
  * DenokvClientOptions specifies configuration parameters for Deno KV client contexts.

@@ -1,7 +1,7 @@
 import type * as rdfjs from "@rdfjs/types";
 import { Readable } from "node:stream";
-import { toRdfjsQuad } from "@/client/quad-store/mod.ts";
-import type { Quad } from "@/client/quad-store/mod.ts";
+import { toRdfjsQuad } from "@worlds/client/quad-store";
+import type { Quad } from "@worlds/client/quad-store";
 import {
   buildGenerationDataPrefix,
   buildPrimaryQuadKey,

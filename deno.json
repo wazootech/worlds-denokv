@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "license": "WTFPL",
   "nodeModulesDir": "auto",
+  "exclude": [
+    "vendor/jsonld-context-parser/**"
+  ],
   "exports": {
     ".": "./src/mod.ts",
     "./quad-store": "./src/denokv/quad-store/mod.ts",

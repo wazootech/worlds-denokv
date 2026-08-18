@@ -1,5 +1,14 @@
 # Worlds Deno KV
 
+> [!IMPORTANT]
+> **Archived - read-only.** This repository is archived and no longer
+> maintained, and its issue/PR trackers are locked. Development effort is
+> focused on the SQL-class Worlds durable backends
+> ([worlds-sqlite](https://github.com/wazootech/worlds-sqlite),
+> [worlds-libsql](https://github.com/wazootech/worlds-libsql),
+> [worlds-cloudflare](https://github.com/wazootech/worlds-cloudflare),
+> [worlds-postgres](https://github.com/wazootech/worlds-postgres)).
+
 Deno KV-backed RDF quad store, search index, and client factory built on
 [`@worlds/sdk`](https://jsr.io/@worlds/sdk) with the in-house
 [`@wazoo/sparql-engine`](https://jsr.io/@wazoo/sparql-engine) wired for SPARQL.

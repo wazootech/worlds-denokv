@@ -15,7 +15,7 @@
   "imports": {
     "@/": "./src/",
     "@rdfjs/types": "npm:@rdfjs/types@^2.0.1",
-    "@wazoo/sparql-engine": "jsr:@wazoo/sparql-engine@^0.4.0",
+    "@wazoo/sparql-engine": "jsr:@wazoo/sparql-engine@^0.4.1",
     "@worlds/sdk": "jsr:@worlds/sdk@^0.2.0",
     "@worlds/sdk/quad-store": "jsr:@worlds/sdk@^0.2.0/quad-store",
     "@worlds/sdk/search-index": "jsr:@worlds/sdk@^0.2.0/search-index",

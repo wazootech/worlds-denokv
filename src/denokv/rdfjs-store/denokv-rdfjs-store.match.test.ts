@@ -1,6 +1,6 @@
 import { assertEquals } from "@std/assert";
 import type * as rdfjs from "@rdfjs/types";
-import { DataFactory } from "@wazoo/sparql-engine";
+import { DataFactory } from "@wazoo/sparql-engine/data-model";
 import { generateSyntheticQuads } from "../../../benchmarks/shared/synthetic-data.ts";
 import { collectQuadsFromStream } from "@worlds/sdk/quad-store";
 import { seedDenokvQuadsForTest } from "@/denokv/create-denokv-stores-for-test.ts";

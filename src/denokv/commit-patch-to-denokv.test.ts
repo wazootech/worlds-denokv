@@ -1,5 +1,5 @@
 import { assertEquals } from "@std/assert";
-import { DataFactory } from "@wazoo/sparql-engine";
+import { DataFactory } from "@wazoo/sparql-engine/data-model";
 import { commitPatchToDenokv } from "./commit-patch-to-denokv.ts";
 import { readActiveGeneration } from "./kv/denokv-dataset-generation.ts";
 

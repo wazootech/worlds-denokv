@@ -1,4 +1,4 @@
-import { DataFactory } from "@wazoo/sparql-engine";
+import { DataFactory } from "@wazoo/sparql-engine/data-model";
 import type { Quad } from "@rdfjs/types";
 
 const { quad, namedNode, literal } = DataFactory;

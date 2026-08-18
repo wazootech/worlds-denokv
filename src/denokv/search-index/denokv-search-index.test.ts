@@ -1,5 +1,5 @@
 import { assertEquals } from "@std/assert";
-import { DataFactory } from "@wazoo/sparql-engine";
+import { DataFactory } from "@wazoo/sparql-engine/data-model";
 import {
   createDenokvStoresForTest,
   seedDenokvQuadsForTest,

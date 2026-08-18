@@ -1,4 +1,4 @@
-import { DataFactory } from "@wazoo/sparql-engine";
+import { DataFactory } from "@wazoo/sparql-engine/data-model";
 import { createDenokvClient } from "@worlds/denokv";
 
 import { generateSyntheticQuads } from "./shared/synthetic-data.ts";

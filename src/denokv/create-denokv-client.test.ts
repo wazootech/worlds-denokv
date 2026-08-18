@@ -1,5 +1,5 @@
 import { assertEquals, assertExists } from "@std/assert";
-import { DataFactory } from "@wazoo/sparql-engine";
+import { DataFactory } from "@wazoo/sparql-engine/data-model";
 import { createDenokvClient } from "./create-denokv-client.ts";
 
 const { quad, namedNode, literal } = DataFactory;

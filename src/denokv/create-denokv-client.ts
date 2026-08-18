@@ -1,6 +1,6 @@
-import { Client } from "@worlds/sdk";
+import { Sdk } from "@worlds/sdk";
 import type * as rdfjs from "@rdfjs/types";
-import type { ClientInterface } from "@worlds/sdk";
+import type { SdkInterface } from "@worlds/sdk";
 import { WazooSparqlEngine } from "@wazoo/sparql-engine";
 
 import { DenokvRdfjsStore } from "./rdfjs-store/mod.ts";
@@ -26,7 +26,7 @@ export interface DenokvClientOptions extends CommitPatchToDenokvOptions {
  */
 export function createDenokvClient(
   options: DenokvClientOptions,
-): ClientInterface {
+): SdkInterface {
   const denokvRdfjsStore = new DenokvRdfjsStore({
     kv: options.kv,
     keyPrefix: options.keyPrefix,
@@ -48,7 +48,7 @@ export function createDenokvClient(
     createTransaction: () => quadStore.createTransaction(),
   });
 
-  return new Client({
+  return new Sdk({
     quadStore,
     searchIndex,
     sparqlEngine,

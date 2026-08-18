@@ -1,6 +1,6 @@
 import type { Quad } from "@rdfjs/types";
 
-import type { ClientInterface } from "@worlds/sdk";
+import type { SdkInterface } from "@worlds/sdk";
 import { createDenokvClient } from "@worlds/denokv";
 import {
   buildHexastorePerfFixtureChecksumInputs,
@@ -60,7 +60,7 @@ export const denokvHexastorePerfBackends = [
 /** PreloadedSparqlFixture holds a warmed Client and its storage handle. */
 export interface PreloadedSparqlFixture {
   /** client executes SPARQL against the preloaded corpus. */
-  client: ClientInterface;
+  client: SdkInterface;
   /** kv is set for denokvStore fixtures. */
   kv?: Deno.Kv;
 }

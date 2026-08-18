@@ -1,22 +1,18 @@
-import { Client } from "@worlds/client";
+import { Client } from "@worlds/sdk";
 import type * as rdfjs from "@rdfjs/types";
-import type { ClientInterface } from "@worlds/client";
-import type { ComunicaQueryEngine } from "@worlds/client/adapters/comunica";
-import { ComunicaSparqlEngine } from "@worlds/client/adapters/comunica";
+import type { ClientInterface } from "@worlds/sdk";
+import { WazooSparqlEngine } from "@wazoo/sparql-engine";
 
 import { DenokvRdfjsStore } from "./rdfjs-store/mod.ts";
 import { DenokvSearchIndex } from "./search-index/mod.ts";
 import { DenokvQuadStore } from "./quad-store/mod.ts";
 import type { CommitPatchToDenokvOptions } from "./commit-patch-to-denokv.ts";
-import type { SearchIndexOnImport } from "@worlds/client/search-index";
+import type { SearchIndexOnImport } from "@worlds/sdk/search-index";
 
 /**
  * DenokvClientOptions specifies configuration parameters for Deno KV client contexts.
  */
 export interface DenokvClientOptions extends CommitPatchToDenokvOptions {
-  /** queryEngine optionally enables built-in Comunica SPARQL over DenokvRdfjsStore. */
-  queryEngine?: ComunicaQueryEngine;
-
   /** searchIndexOnImport controls when search indexing runs. */
   searchIndexOnImport?: SearchIndexOnImport;
 
@@ -25,7 +21,8 @@ export interface DenokvClientOptions extends CommitPatchToDenokvOptions {
 }
 
 /**
- * createDenokvClient synthesizes a Client over DenokvRdfjsStore.
+ * createDenokvClient synthesizes a Client over DenokvRdfjsStore with the in-house
+ * WazooSparqlEngine wired over the same store (SPARQL + search + import/export).
  */
 export function createDenokvClient(
   options: DenokvClientOptions,
@@ -46,13 +43,10 @@ export function createDenokvClient(
     store: denokvRdfjsStore,
   });
 
-  const sparqlEngine = options.queryEngine
-    ? new ComunicaSparqlEngine({
-      queryEngine: options.queryEngine,
-      store: denokvRdfjsStore as unknown as rdfjs.Store,
-      createTransaction: () => quadStore.createTransaction(),
-    })
-    : undefined;
+  const sparqlEngine = new WazooSparqlEngine({
+    store: denokvRdfjsStore as unknown as rdfjs.Store,
+    createTransaction: () => quadStore.createTransaction(),
+  });
 
   return new Client({
     quadStore,

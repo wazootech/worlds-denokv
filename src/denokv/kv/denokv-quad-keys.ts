@@ -1,6 +1,6 @@
 import type * as rdfjs from "@rdfjs/types";
-import type { Quad } from "@worlds/client/quad-store";
-import { fromRdfjsQuad } from "@worlds/client/quad-store";
+import type { Quad } from "@worlds/sdk/quad-store";
+import { fromRdfjsQuad } from "@worlds/sdk/quad-store";
 import {
   buildIndexKey,
   buildPrimaryQuadKey,

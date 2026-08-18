@@ -1,6 +1,6 @@
-import { DataFactory } from "n3";
+import { DataFactory } from "@wazoo/sparql-engine";
 import { createDenokvClient } from "@worlds/denokv";
-import { QueryEngine } from "@comunica/query-sparql-rdfjs-lite";
+
 import { generateSyntheticQuads } from "./shared/synthetic-data.ts";
 
 const { quad, namedNode, literal } = DataFactory;
@@ -8,7 +8,6 @@ const { quad, namedNode, literal } = DataFactory;
 using kv = await Deno.openKv(":memory:");
 const client = createDenokvClient({
   kv,
-  queryEngine: new QueryEngine(),
   searchIndexOnImport: "disabled",
 });
 

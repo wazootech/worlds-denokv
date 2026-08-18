@@ -1,7 +1,7 @@
 import type * as rdfjs from "@rdfjs/types";
 import { Readable } from "node:stream";
-import { toRdfjsQuad } from "@worlds/client/quad-store";
-import type { Quad } from "@worlds/client/quad-store";
+import { toRdfjsQuad } from "@worlds/sdk/quad-store";
+import type { Quad } from "@worlds/sdk/quad-store";
 import {
   buildGenerationDataPrefix,
   buildPrimaryQuadKey,
@@ -37,7 +37,7 @@ export interface DenokvRdfjsStoreOptions {
 }
 /**
  * DenokvRdfjsStore is a stateless RDF/JS ReadSource backed by Deno KV.
- * It supports Comunica SPARQL by implementing match() and countQuads().
+ * It supports WazooSparqlEngine by implementing match() and countQuads().
  * Mutative operations are handled via the TransactionalRdfjsStore wrapper.
  */
 export class DenokvRdfjsStore {
@@ -232,7 +232,7 @@ export class DenokvRdfjsStore {
   }
 
   /**
-   * countQuads returns the number of quads matching the given quad pattern (Comunica cardinality hint).
+   * countQuads returns the number of quads matching the given quad pattern (cardinality hint).
    */
   public countQuads(
     subject?: rdfjs.Term | null,

@@ -1,7 +1,8 @@
 # Worlds Deno KV
 
-Deno KV-backed RDF quad store, search index, and client factory extracted from
-[`@worlds/client`](https://jsr.io/@worlds/client).
+Deno KV-backed RDF quad store, search index, and client factory built on
+[`@worlds/sdk`](https://jsr.io/@worlds/sdk) with the in-house
+[`@wazoo/sparql-engine`](https://jsr.io/@wazoo/sparql-engine) wired for SPARQL.
 
 ## Install
 

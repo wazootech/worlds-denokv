@@ -5,11 +5,11 @@ import type {
   SearchRequest,
   SearchResponse,
   SearchResult,
-} from "@worlds/client/search-index";
+} from "@worlds/sdk/search-index";
 import { buildSearchResultId } from "./build-search-result-id.ts";
-import { filterQuads, isTextualLiteral } from "@worlds/client/quad-store";
-import type { Quad } from "@worlds/client/quad-store";
-import { toRdfjsQuad } from "@worlds/client/quad-store";
+import { filterQuads, isTextualLiteral } from "@worlds/sdk/quad-store";
+import type { Quad } from "@worlds/sdk/quad-store";
+import { toRdfjsQuad } from "@worlds/sdk/quad-store";
 import { buildGenerationDataPrefix } from "@/denokv/kv/denokv-keys.ts";
 import { readActiveGeneration } from "@/denokv/kv/denokv-dataset-generation.ts";
 

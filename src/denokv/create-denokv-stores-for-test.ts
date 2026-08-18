@@ -13,7 +13,7 @@ export interface DenokvStoresForTest {
   /** denokvQuadStore serves Client import and export in tests. */
   denokvQuadStore: DenokvQuadStore;
 
-  /** denokvRdfjsStore serves Comunica SPARQL match and buffered updates in tests. */
+  /** denokvRdfjsStore serves WazooSparqlEngine match and buffered updates in tests. */
   denokvRdfjsStore: DenokvRdfjsStore;
 }
 

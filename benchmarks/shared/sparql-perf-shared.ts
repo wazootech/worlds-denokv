@@ -1,6 +1,6 @@
 import type { Quad } from "@rdfjs/types";
-import { QueryEngine } from "@comunica/query-sparql-rdfjs-lite";
-import type { ClientInterface } from "@worlds/client";
+
+import type { ClientInterface } from "@worlds/sdk";
 import { createDenokvClient } from "@worlds/denokv";
 import {
   buildHexastorePerfFixtureChecksumInputs,
@@ -25,8 +25,6 @@ export const selectiveSparqlQuery =
 /** fullScanSparqlQuery exercises an unbound triple pattern with a small result cap. */
 export const fullScanSparqlQuery =
   "SELECT ?s ?p ?o WHERE { ?s ?p ?o } LIMIT 100";
-
-const sharedQueryEngine = new QueryEngine();
 
 /** SparqlQueryShape labels the SPARQL quad index perf query patterns. */
 export type SparqlQueryShape = "selective" | "fullScan";
@@ -108,18 +106,15 @@ async function importCorpusIntoDenokvHexastore(
 }
 
 /**
- * openDenokvHexastoreSparqlEngine wires Comunica over an existing Deno KV corpus.
+ * openDenokvHexastoreSparqlEngine wires WazooSparqlEngine over an existing Deno KV corpus.
  */
 function openDenokvHexastoreSparqlEngine(kv: Deno.Kv): PreloadedSparqlFixture {
-  const worldsClient = createDenokvClient({
-    kv,
-    queryEngine: sharedQueryEngine,
-  });
+  const worldsClient = createDenokvClient({ kv });
   return { kv, client: worldsClient };
 }
 
 /**
- * createDenokvHexastoreSparqlEngine wires Comunica over DenokvRdfjsStore (memory or file-backed KV).
+ * createDenokvHexastoreSparqlEngine wires WazooSparqlEngine over DenokvRdfjsStore (memory or file-backed KV).
  */
 async function createDenokvHexastoreSparqlEngine(
   corpusQuads: Quad[],

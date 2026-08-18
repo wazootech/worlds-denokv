@@ -1,7 +1,7 @@
 import type * as rdfjs from "@rdfjs/types";
-import type { Patch, TransactionContext } from "@worlds/client/quad-store";
-import { isReplaceImportCommit } from "@worlds/client/quad-store";
-import { hashQuads } from "@worlds/client/quad-store";
+import type { Patch, TransactionContext } from "@worlds/sdk/quad-store";
+import { isReplaceImportCommit } from "@worlds/sdk/quad-store";
+import { hashQuads } from "@worlds/sdk/quad-store";
 
 import {
   bumpDatasetGeneration,

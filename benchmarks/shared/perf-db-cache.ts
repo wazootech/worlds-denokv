@@ -1,6 +1,6 @@
 import { encodeHex } from "@std/encoding/hex";
 import * as path from "@std/path";
-import { DenokvRdfjsStore } from "@worlds/client/denokv";
+import { DenokvRdfjsStore } from "../../src/denokv/rdfjs-store/mod.ts";
 import { SYNTHETIC_CORPUS_VERSION } from "./synthetic-data.ts";
 
 /**

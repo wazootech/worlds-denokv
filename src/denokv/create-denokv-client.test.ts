@@ -1,10 +1,8 @@
-import { assertEquals, assertExists, assertRejects } from "@std/assert";
-import { QueryEngine } from "@comunica/query-sparql-rdfjs-lite";
-import { DataFactory } from "n3";
+import { assertEquals, assertExists } from "@std/assert";
+import { DataFactory } from "@wazoo/sparql-engine";
 import { createDenokvClient } from "./create-denokv-client.ts";
 
 const { quad, namedNode, literal } = DataFactory;
-const queryEngine = new QueryEngine();
 
 Deno.test(
   "createDenokvClient - import delivers search hits from Deno Kv",
@@ -58,14 +56,11 @@ Deno.test(
 );
 
 Deno.test(
-  "createDenokvClient - queryEngine SPARQL reads from Deno KV",
+  "createDenokvClient - WazooSparqlEngine SPARQL reads from Deno KV",
   async () => {
     const kv = await Deno.openKv(":memory:");
     try {
-      const client = createDenokvClient({
-        kv,
-        queryEngine,
-      });
+      const client = createDenokvClient({ kv });
 
       await client.import({
         source: {
@@ -100,17 +95,33 @@ Deno.test(
 );
 
 Deno.test(
-  "createDenokvClient - sparql rejects when queryEngine is omitted",
+  "createDenokvClient - WazooSparqlEngine ASK over Deno KV",
   async () => {
     const kv = await Deno.openKv(":memory:");
     try {
       const client = createDenokvClient({ kv });
 
-      await assertRejects(
-        () => client.sparql({ query: "ASK WHERE { ?s ?p ?o }" }),
-        Error,
-        "SPARQL engine is not configured.",
-      );
+      await client.import({
+        source: {
+          kind: "quads",
+          quads: [
+            quad(
+              namedNode("urn:person:dana"),
+              namedNode("urn:bio"),
+              literal("Dana surveys alpine ridgelines."),
+            ),
+          ],
+        },
+      });
+
+      const response = await client.sparql({
+        query: "ASK WHERE { <urn:person:dana> <urn:bio> ?text }",
+      });
+
+      if (response.kind !== "ask") {
+        throw new Error("Expected ask response kind");
+      }
+      assertEquals(response.data.boolean, true);
     } finally {
       kv.close();
     }
